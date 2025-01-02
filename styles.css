@@ -1,0 +1,310 @@
+/* Reset some default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #333;
+}
+
+.navbar .logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger .line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+}
+
+/* Mobile view (burger menu) */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px 0;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .nav-links.active {
+    display: block;
+  }
+}
+
+
+
+
+
+
+/* Hero Section */
+.hero {
+  background-color: #FFBA00;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background-color: #fff;
+  color: #4CAF50;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.cta-button:hover {
+  background-color: #45a049;
+}
+
+/* About Section */
+.about {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Services Section */
+.services {
+  padding: 50px 20px;
+}
+
+.services-container {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.service-item {
+  max-width: 300px;
+}
+
+.service-item h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.service-item p {
+  font-size: 16px;
+}
+
+/* Call to Action Section */
+.cta {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.cta h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background-color: #fff;
+  color: #333;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.cta-button:hover {
+  background-color: #ddd;
+}
+
+/* Contact Section */
+.contact {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.contact-content {
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.contact form input,
+.contact form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contact form button {
+  padding: 15px 30px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.contact form button:hover {
+  background-color: #45a049;
+}
+
+
+
+
+
+
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 30px 0;
+  margin-top: 50px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20px;
+}
+
+.footer-section {
+  max-width: 250px;
+}
+
+.footer-section h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.footer-section form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+}
+
+.footer-section form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.footer-section form button:hover {
+  background-color: #45a049;
+}
+
+/* Social Media Links */
+.social-media {
+  list-style: none;
+}
+
+.social-media li {
+  margin: 5px 0;
+}
+
+.social-media li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Copyright Section */
+.copyright {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ddd;
+}
