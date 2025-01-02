@@ -83,7 +83,10 @@ body {
 
 /* Hero Section */
 .hero {
-  background-color: #FFBA00;
+  background-image: url('zhack-id-Pa-gJrB-bGE.jpg'); 
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat
   color: white;
   text-align: center;
   padding: 100px 20px;
