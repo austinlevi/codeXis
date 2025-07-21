@@ -15,6 +15,43 @@
     <section id="product-grid" class="product-grid"></section>
   </main>
 
-  <script src="shop.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const grid = document.getElementById("product-grid");
+
+      try {
+        const res = await fetch("http://localhost:1337/api/products?populate=*");
+        const data = await res.json();
+
+        if (!data.data || data.data.length === 0) {
+          grid.innerHTML = "<p>No products found.</p>";
+          return;
+        }
+
+        data.data.forEach(product => {
+          const { id, attributes } = product;
+          const { title, description, price, image } = attributes;
+
+          const imageUrl = image?.data?.attributes?.url
+            ? `http://localhost:1337${image.data.attributes.url}`
+            : "https://via.placeholder.com/300x200?text=No+Image";
+
+          const productHTML = `
+            <div class="product-card" id="product-${id}">
+              <img src="${imageUrl}" alt="${title}" />
+              <h3>${title}</h3>
+              <p>${description}</p>
+              <strong>$${price}</strong>
+            </div>
+          `;
+
+          grid.innerHTML += productHTML;
+        });
+      } catch (error) {
+        grid.innerHTML = "<p>Error loading products.</p>";
+        console.error("Fetch error:", error);
+      }
+    });
+  </script>
 </body>
 </html>
