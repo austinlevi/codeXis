@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.getElementById('product-grid');
+  const endpoint = 'http://localhost:1337/api/products';
 
-  fetch('fetch('http://localhost:1337/api/products')
+  fetch(endpoint)
     .then(res => res.json())
     .then(json => {
       const products = json.data;
@@ -26,5 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(err => {
       grid.innerHTML = `<p>Failed to load products. Try again later.</p>`;
       console.error(err);
+    });
+
+  // Optional: Log raw data
+  fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data); // Debugging: check if products appear
     });
 });
