@@ -16,42 +16,44 @@
   </main>
 
   <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      const grid = document.getElementById("product-grid");
+    async function loadProducts() {
+      const productGrid = document.getElementById("product-grid");
 
       try {
-        const res = await fetch("http://localhost:1337/api/products?populate=*");
-        const data = await res.json();
+        const response = await fetch("http://localhost:1337/api/products");
+        if (!response.ok) throw new Error("Network response was not ok");
 
-        if (!data.data || data.data.length === 0) {
-          grid.innerHTML = "<p>No products found.</p>";
+        const data = await response.json();
+
+        const products = data.data;
+
+        if (products.length === 0) {
+          productGrid.innerHTML = "<p>No products found.</p>";
           return;
         }
 
-        data.data.forEach(product => {
-          const { id, attributes } = product;
-          const { title, description, price, image } = attributes;
+        products.forEach(product => {
+          const title = product.attributes.title || "Untitled";
+          const description = product.attributes.description || "";
+          const price = product.attributes.price || "N/A";
 
-          const imageUrl = image?.data?.attributes?.url
-            ? `http://localhost:1337${image.data.attributes.url}`
-            : "https://via.placeholder.com/300x200?text=No+Image";
-
-          const productHTML = `
-            <div class="product-card" id="product-${id}">
-              <img src="${imageUrl}" alt="${title}" />
-              <h3>${title}</h3>
-              <p>${description}</p>
-              <strong>$${price}</strong>
-            </div>
+          const productCard = document.createElement("div");
+          productCard.className = "product-card";
+          productCard.innerHTML = `
+            <h3>${title}</h3>
+            <p>${description}</p>
+            <strong>Price: $${price}</strong>
           `;
 
-          grid.innerHTML += productHTML;
+          productGrid.appendChild(productCard);
         });
       } catch (error) {
-        grid.innerHTML = "<p>Error loading products.</p>";
-        console.error("Fetch error:", error);
+        productGrid.innerHTML = `<p style="color:red;">Error loading products.</p>`;
+        console.error("Error:", error);
       }
-    });
+    }
+
+    loadProducts();
   </script>
 </body>
 </html>
