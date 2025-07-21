@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.getElementById('product-grid');
 
-  fetch('https://your-strapi-url/api/products?populate=*')
+  fetch('fetch('http://localhost:1337/api/products')
     .then(res => res.json())
     .then(json => {
       const products = json.data;
